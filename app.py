@@ -62,3 +62,27 @@ if st.button('Predict Price'):
     # Predict price using the pipeline
     pred_price = pipeline.predict(input_df)[0]
     st.success(f"Predicted Price: ${pred_price:,.2f}")
+
+
+# Footer fixed at the bottom
+st.markdown(
+    """
+    <style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #ffffff;
+        text-align: center;
+        color: gray;
+        font-size: 14px;
+        padding: 10px 0;
+    }
+    </style>
+    <div class="footer">
+        Made with ❤️ Anushka Mandal © 2025
+    </div>
+    """,
+    unsafe_allow_html=True
+)
