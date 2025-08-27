@@ -1,6 +1,6 @@
-# CarSight 🚗💰
+# CarSight
 
-**CarSight** is a machine learning project for **predicting used Toyota car prices** using key vehicle features. It provides data-driven insights for pricing, inventory management, and business decisions.
+**CarSight** is a machine learning project for predicting used car prices using key vehicle features. It provides data-driven insights for pricing, inventory management, and business decisions.
 
 ---
 
