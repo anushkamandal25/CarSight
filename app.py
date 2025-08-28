@@ -63,7 +63,7 @@ if st.button('Predict Price'):
     try:
         pred_price = pipeline.predict(input_df)[0]
         st.success(f"Predicted Price: ${pred_price:,.2f}")
-    except (ValueError, KeyError) as e:
+    except Exception as e:
         st.error("Prediction failed. Please check input format.")
         st.exception(e)
 
