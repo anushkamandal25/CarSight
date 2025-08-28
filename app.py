@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-st.write("Python version:", sys.version)
+# st.write("Python version:", sys.version)
 
 st.markdown(
     """
