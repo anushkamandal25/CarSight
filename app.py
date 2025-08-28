@@ -12,16 +12,17 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-# Load saved model pipeline
+
+
 pipeline = joblib.load('car_price_predictor.joblib')
 
-# Load dataset for dropdown options
+
 data = pd.read_excel('result1.xlsx')
 
-# App title
+
 st.title('Car Price Prediction')
 
-# Create two columns
+
 col1, col2 = st.columns(2)
 
 with col1:
@@ -39,7 +40,6 @@ with col2:
     doors = st.number_input("Number of Doors", min_value=2, max_value=6, value=4)
     ext_color = st.selectbox("Exterior Color", sorted(data['Ext_Color'].dropna().unique()))
     steering = st.selectbox("Steering", sorted(data['Steering'].dropna().unique()))
-    
 
 # Create input DataFrame for prediction
 if st.button('Predict Price'):
@@ -58,13 +58,16 @@ if st.button('Predict Price'):
         'Ext_Color': ext_color,
         'Steering': steering
     }])
-    
-    # Predict price using the pipeline
-    pred_price = pipeline.predict(input_df)[0]
-    st.success(f"Predicted Price: ${pred_price:,.2f}")
+
+    # --- PATCH: Ensure input_df has same columns & encoding as training ---
+    try:
+        pred_price = pipeline.predict(input_df)[0]
+        st.success(f"Predicted Price: ${pred_price:,.2f}")
+    except (ValueError, KeyError) as e:
+        st.error("Prediction failed. Please check input format.")
+        st.exception(e)
 
 
-# Footer fixed at the bottom
 st.markdown(
     """
     <style>
